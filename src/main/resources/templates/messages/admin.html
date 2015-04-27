@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:include="layout :: htmlhead"
+	th:with="title='ParkrunPBReboot - Predict my time?'"></head>
+<body>
+	<div th:replace="layout :: navbar">(navbar)</div>
+	<div class="container">
+		<div class="page-header">
+			<h1>ParkrunPBReboot - Add New Course?</h1>
+		</div>			
+			
+		<form action="#" th:action="@{/admin}" th:object="${parkrunCourse}" id="parkrunCourse" 
+			method="post" class="form-horizontal">
+			
+        <div th:if="${#fields.hasErrors('*')}" class="errorblock">
+            <p th:each="error : ${#fields.errors('*')}" th:text="${error}">
+               Validation error
+            </p>
+        </div>
+        
+		<div class="form-group">
+			<label class="col-sm-2 control-label" for="courseName">Course Name</label>
+			<div class="col-sm-4">
+				<input id="courseName" name="courseName" class="form-control" type="text" size="32" th:field="*{courseName}" />
+			</div>
+		</div>
+        
+		<div class="form-group">
+			<label class="col-sm-2 control-label" for="prUrl">Link</label>
+			<div class="col-sm-4">
+				<input id="url" name="url" class="form-control" type="text" size="100" th:field="*{url}" />
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<label class="col-sm-2 control-label" for="prAverageTime">AverageTime</label>
+            <div class="col-sm-1"><input id="mm" name="mm" class="form-control" type="text" size="2" maxlength="2" th:field="*{mm}" /></div>
+            <div class="col-sm-1"><input id="ss" name="ss" class="form-control" type="text" size="2" maxlength="2" th:field="*{ss}" /></div>
+		</div>
+		
+		<div class="form-group">
+			<label class="col-sm-2 control-label">&nbsp;</label>
+			<div class="col-sm-4">
+               <input type="submit" value="Add Course" class="btn btn-default btn-lg" />
+            </div>
+		</div>
+
+		</form>
+
+		<p>
+		<table class="table table-condensed">
+			<thead>
+				<tr>
+					<th>Parkrun Id</th>
+					<th>Course</th>
+					<th>Average Time</th>
+				</tr>
+			</thead>
+			<tbody>
+
+				<tr th:each="parkrunCourse : ${parkrunCourseIterable}">
+                    <td th:text="${parkrunCourse.courseId}">&nbsp;</td>
+					<td th:text="${parkrunCourse.courseName}">&nbsp;</td>
+					<td th:text="${parkrunCourse.averageTimeString}">&nbsp;</td>
+				</tr>
+
+			</tbody>
+		</table>
+		</p>
+
+
+	</div>
+
+	<div th:include="layout :: footer" id="footer">(footer)</div>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:include="layout :: htmlhead"
+	th:with="title='ParkrunPBReboot - Predict my time?'"></head>
+<body>
+	<div th:replace="layout :: navbar">(navbar)</div>
+	<div class="container">
+		<div class="page-header">
+			<h1>ParkrunPBReboot - Predict my time?</h1>
+		</div>
+
+		<p class="lead">Enter your time and the course your ran it on, and
+			we'll predict your time on other parkrun courses</p>
+			
+			
+		<form action="#" th:action="@{/}" th:object="${parkrunPredict}" id="parkrunPredict" 
+			method="post" class="form-inline text-center" >
+			
+        <div th:if="${#fields.hasErrors('*')}" class="errorblock">
+          <p th:each="error : ${#fields.errors('*')}" th:text="${error}">
+            Validation error
+          </p>
+        </div>
+        
+			<div class="form-group;align:center">
+<input id="mm" name="mm" class="form-control input-lg" type="text" th:attr="value=${mm}" size="2" maxlength="2" /> : 
+<input id="ss" name="ss" class="form-control input-lg" type="text" th:attr="value=${ss}" size="2" maxlength="2" /> 
+<select id="courseId" name="courseId" class="form-control input-lg" th:field="*{courseId}">
+   <option th:each="parkrunCourse : ${parkrunCourseIterable}"
+		   th:value="${parkrunCourse.courseId}"
+		   th:text="${parkrunCourse.courseName}">Wireframe</option>
+</select> 
+<input type="submit" value="Predict  My Time" class="btn btn-default btn-lg" />
+			</div>
+
+		</form>
+
+		<p th:if="${hasResults == true}">
+		<table class="table table-condensed">
+			<thead>
+				<tr>
+					<th>Parkrun Course</th>
+					<th>Average Course Time</th>
+					<th>Predicted Time</th>
+				</tr>
+			</thead>
+			<tbody>
+
+				<tr th:each="parkrunCourse : ${parkrunCourseIterable}">
+					<td><a th:href="${parkrunCourse.url}" th:text="${parkrunCourse.courseName}" target="_blank"></a>&nbsp;</td>
+					<td th:text="${parkrunCourse.averageTimeString}">&nbsp;</td>
+					<td th:text="${parkrunCourse.predictedTimeString}">&nbsp;</td>
+				</tr>
+
+			</tbody>
+		</table>
+		</p>
+
+
+	</div>
+
+	<div th:include="layout :: footer" id="footer">(footer)</div>
+</body>
+</html>
