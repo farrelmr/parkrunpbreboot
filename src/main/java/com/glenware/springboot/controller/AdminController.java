@@ -14,6 +14,7 @@ import com.glenware.springboot.form.ParkrunCourse;
 import com.glenware.springboot.repository.ParkrunCourseRepository;
 
 @Controller
+@RequestMapping("/admin")
 public class AdminController {
 	
 	@Autowired
