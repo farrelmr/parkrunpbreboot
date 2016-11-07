@@ -14,5 +14,5 @@ INSERT INTO PARKRUNCOURSE(PRCOURSE_ID, COURSENAME, URL, AVERAGETIME) VALUES (10,
 INSERT INTO PARKRUNCOURSE(PRCOURSE_ID, COURSENAME, URL, AVERAGETIME) VALUES (11, 'Glasgow', 'http://www.parkrun.org.uk/glasgow/', 1585);
 INSERT INTO PARKRUNCOURSE(PRCOURSE_ID, COURSENAME, URL, AVERAGETIME) VALUES (12, 'Eglington', 'http://www.parkrun.org.uk/eglinton/', 1681);
 --
-insert into custom_users (username, password, enabled) values ('mycustom', 'mycustom', true);
-insert into custom_authorities (username, authority) values ('mycustom', 'ROLE_DEFAULT');
+insert into custom_users (username, password, enabled) values ('customadmin', 'customadmin', true);
+insert into custom_authorities (username, authority) values ('customadmin', 'ROLE_CUSTOM_ADMIN');
