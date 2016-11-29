@@ -16,3 +16,13 @@ INSERT INTO PARKRUNCOURSE(PRCOURSE_ID, COURSENAME, URL, AVERAGETIME) VALUES (12,
 --
 insert into custom_users (username, password, enabled) values ('customadmin', 'customadmin', true);
 insert into custom_authorities (username, authority) values ('customadmin', 'ROLE_CUSTOM_ADMIN');
+-- NoOpPasswordEncoder - pw - NoOpPasswordEncoder
+insert into custom_users (username, password, enabled) values ('NoOpPasswordEncoder', 'NoOpPasswordEncoder', true);
+insert into custom_authorities (username, authority) values ('NoOpPasswordEncoder', 'ROLE_CUSTOM_ADMIN');
+-- StandardPasswordEncoder - pw - StandardPasswordEncoder
+insert into custom_users (username, password, enabled) values ('StandardPasswordEncoder', 'c585256d114a65edf8e14e2c7ef73211a51d9a75e3717404e26e5e7a0f668e32b5bcb761e8987a31', true);
+insert into custom_authorities (username, authority) values ('StandardPasswordEncoder', 'ROLE_CUSTOM_ADMIN');
+-- BCryptPasswordEncoder - pw - BCryptPasswordEncoder
+insert into custom_users (username, password, enabled) values ('BCryptPasswordEncoder', '$2a$10$sTEe7.f1Qo.Ma.A56ENI5ekBBW.NS5L1t.05xYaylxwj46O0cgMIm', true);
+insert into custom_authorities (username, authority) values ('BCryptPasswordEncoder', 'ROLE_CUSTOM_ADMIN');
+--
